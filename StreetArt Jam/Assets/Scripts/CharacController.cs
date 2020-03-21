@@ -30,26 +30,18 @@ public class CharacController : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
         Vector2 position = transform.position;
-        position.x = position.x + 3.0f * horizontal * Time.deltaTime;
+        position.x = position.x + 2.8f * horizontal * Time.deltaTime;
         transform.position = position;
 
-        if (IsGrounded() == false)
+        if (!IsGrounded())
         {
             animator.SetBool("isJumping", false);
         }
 
-        // Jump with space or Z
-        if (IsGrounded() == true && Input.GetKeyDown(KeyCode.Space))
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetBool("isJumping", true);
-            jumpVelocity = 5f;
-            rigidbody2d.velocity = Vector2.up * jumpVelocity;
-        }
-    
-        if (IsGrounded() == true && Input.GetKeyDown(KeyCode.Z))
-        {
-            animator.SetBool("isJumping", true);
-            jumpVelocity = 5f;
+            jumpVelocity = 4f;
             rigidbody2d.velocity = Vector2.up * jumpVelocity;
         }
     }
