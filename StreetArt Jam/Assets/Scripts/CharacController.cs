@@ -38,7 +38,15 @@ public class CharacController : MonoBehaviour
             animator.SetBool("isJumping", false);
         }
 
+        // Jump with space or Z
         if (IsGrounded() == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetBool("isJumping", true);
+            jumpVelocity = 5f;
+            rigidbody2d.velocity = Vector2.up * jumpVelocity;
+        }
+    
+        if (IsGrounded() == true && Input.GetKeyDown(KeyCode.Z))
         {
             animator.SetBool("isJumping", true);
             jumpVelocity = 5f;
