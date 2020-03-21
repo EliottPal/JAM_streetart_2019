@@ -14,12 +14,14 @@ public class CharacController : MonoBehaviour
     public Rigidbody2D rigidbody2d;
     public BoxCollider2D boxCollider2d;
     public AudioSource jump;
+    Vector3 originalPos;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = transform.GetComponent<Rigidbody2D>();
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
+        originalPos = gameObject.transform.position;
     }
 
     // Update is called once per frame
@@ -46,6 +48,9 @@ public class CharacController : MonoBehaviour
             jumpVelocity = 4f;
             rigidbody2d.velocity = Vector2.up * jumpVelocity;
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+            gameObject.transform.position = originalPos;
     }
 
     private bool IsGrounded()
