@@ -253,6 +253,7 @@ MonoBehaviour:
   animator: {fileID: 156952388}
   rigidbody2d: {fileID: 0}
   boxCollider2d: {fileID: 0}
+  jump: {fileID: 1516250695}
 --- !u!95 &156952388
 Animator:
   serializedVersion: 3
@@ -77679,9 +77680,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1516250693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2cce93107f15a54a93fa08a7deba341, type: 3}
+  m_Script: {fileID: 11500000, guid: 200dcb1d5546b4e46903aaad1db802d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platformsLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  animator: {fileID: 0}
+  rigidbody2d: {fileID: 0}
+  boxCollider2d: {fileID: 0}
   jump: {fileID: 1516250695}
 --- !u!82 &1516250695
 AudioSource:

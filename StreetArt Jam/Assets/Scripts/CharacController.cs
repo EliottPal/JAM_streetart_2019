@@ -13,6 +13,7 @@ public class CharacController : MonoBehaviour
     public Animator animator;
     public Rigidbody2D rigidbody2d;
     public BoxCollider2D boxCollider2d;
+    public AudioSource jump;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +39,9 @@ public class CharacController : MonoBehaviour
             animator.SetBool("isJumping", false);
         }
 
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        if (IsGrounded() && (Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.Z)))
         {
+            jump.Play();
             animator.SetBool("isJumping", true);
             jumpVelocity = 4f;
             rigidbody2d.velocity = Vector2.up * jumpVelocity;
