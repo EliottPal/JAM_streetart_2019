@@ -87,6 +87,7 @@ public class CharacController : MonoBehaviour
                 stop = true;
             else
                 stop = false;
+            drawController.isDrawing = !drawController.isDrawing;
         }
             
     }
