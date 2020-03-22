@@ -10,6 +10,8 @@ using UnityEngine;
 public class CharacController : MonoBehaviour
 {
     [SerializeField] private LayerMask platformsLayerMask;
+    public GameObject levelComplete;
+    private levelCompletedMessage _completed;
     public Animator animator;
     public Rigidbody2D rigidbody2d;
     public BoxCollider2D boxCollider2d;
@@ -27,6 +29,8 @@ public class CharacController : MonoBehaviour
         rigidbody2d = transform.GetComponent<Rigidbody2D>();
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
         originalPos = gameObject.transform.position;
+        _completed = levelComplete.GetComponent<levelCompletedMessage>();
+        _completed.sprite.enabled = false;
         key = false;
         door = false;
     }
@@ -71,7 +75,9 @@ public class CharacController : MonoBehaviour
 
     public void ChangeEnd()
     {
-        if (door == true)
+        if (door == true) {
             endSound.Play();
+            _completed.sprite.enabled = true;
+        }
     }
 }
