@@ -412,9 +412,18 @@ MonoBehaviour:
   platformsLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  JumpBoostLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  levelComplete: {fileID: 0}
+  keyObject: {fileID: 0}
   animator: {fileID: 1306176834}
   rigidbody2d: {fileID: 0}
   boxCollider2d: {fileID: 0}
+  jump: {fileID: 0}
+  keySound: {fileID: 0}
+  endSound: {fileID: 0}
+  drawController: {fileID: 0}
 --- !u!95 &1306176834
 Animator:
   serializedVersion: 3
