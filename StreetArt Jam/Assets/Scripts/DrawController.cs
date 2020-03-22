@@ -9,6 +9,7 @@ public class DrawController : MonoBehaviour
     public float BrushSize = 0.1f;
     public RenderTexture RTexture;
     public float SprayAmmo;
+    public AudioSource SpraySound;
 
     // Use this for initialization
     void Start()
@@ -22,6 +23,14 @@ public class DrawController : MonoBehaviour
 
         if (Input.GetMouseButton(0) && SprayAmmo > 0)
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (SprayAmmo > 0)
+                    SpraySound.Play();
+                if (SprayAmmo < 0)
+                    SpraySound.Stop();
+            }
+
             //cast a ray to the plane
             var Ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -34,9 +43,13 @@ public class DrawController : MonoBehaviour
             }
             if (SprayAmmo > 0)
             {
-                SprayAmmo--;
+                SprayAmmo -= 0.5f;
                 blueBar.SetSize(SprayAmmo / 100);
             }
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            SpraySound.Pause();
         }
     }
 
@@ -58,5 +71,11 @@ public class DrawController : MonoBehaviour
         texture2D.ReadPixels(new Rect(0, 0, RTexture.width, RTexture.height), 0, 0);
         texture2D.Apply();
 
+    }
+
+    public void UpdateBar(float value)
+    {
+        SprayAmmo = value;
+        blueBar.SetSize(SprayAmmo / 100);
     }
 }

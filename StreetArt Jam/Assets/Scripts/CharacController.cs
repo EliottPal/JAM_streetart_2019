@@ -22,6 +22,7 @@ public class CharacController : MonoBehaviour
     bool key;
     bool door;
     float jumpVelocity;
+    public DrawController drawController;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +54,7 @@ public class CharacController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.R))
-            gameObject.transform.position = originalPos;
+            Reset();
 
         if (Input.GetKeyDown(KeyCode.N))
            _completed.sprite.enabled = true;
@@ -82,5 +83,15 @@ public class CharacController : MonoBehaviour
             endSound.Play();
             _completed.sprite.enabled = true;
         }
+    }
+
+    private void Reset()
+    {
+        gameObject.transform.position = originalPos;
+
+        GameObject[] brushes = GameObject.FindGameObjectsWithTag("Brush");
+        foreach (GameObject brush in brushes)
+            GameObject.Destroy(brush);
+        drawController.UpdateBar(100);
     }
 }
