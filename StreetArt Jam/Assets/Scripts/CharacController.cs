@@ -21,6 +21,7 @@ public class CharacController : MonoBehaviour
     public AudioSource jump;
     public AudioSource keySound;
     public AudioSource endSound;
+    private SpriteRenderer renderer;
     Vector3 originalPos;
     bool key;
     bool door;
@@ -33,6 +34,7 @@ public class CharacController : MonoBehaviour
     void Start()
     {
         rigidbody2d = transform.GetComponent<Rigidbody2D>();
+        renderer = gameObject.GetComponent<SpriteRenderer>();
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
         originalPos = gameObject.transform.position;
         _completed = levelComplete.GetComponent<levelCompletedMessage>(); 
@@ -89,7 +91,8 @@ public class CharacController : MonoBehaviour
                 stop = false;
             drawController.isDrawing = !drawController.isDrawing;
         }
-            
+        if (!renderer.isVisible)
+            Reset();
     }
 
     private bool IsGrounded()
