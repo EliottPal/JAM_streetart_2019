@@ -198,7 +198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20274959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.322, y: -1.192, z: 1}
+  m_LocalPosition: {x: 3.33, y: -1.197, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77901,7 +77901,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1516250696}
   - component: {fileID: 1516250695}
-  - component: {fileID: 1516250694}
   m_Layer: 0
   m_Name: jump
   m_TagString: Untagged
@@ -77909,27 +77908,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1516250694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516250693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 200dcb1d5546b4e46903aaad1db802d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  platformsLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  animator: {fileID: 0}
-  rigidbody2d: {fileID: 0}
-  boxCollider2d: {fileID: 0}
-  jump: {fileID: 0}
-  keySound: {fileID: 0}
-  endSound: {fileID: 0}
 --- !u!82 &1516250695
 AudioSource:
   m_ObjectHideFlags: 0
@@ -78482,7 +78460,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1776065703}
   - component: {fileID: 1776065702}
-  - component: {fileID: 1776065704}
   m_Layer: 0
   m_Name: Key Audio
   m_TagString: Untagged
@@ -78600,27 +78577,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1776065704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776065701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 200dcb1d5546b4e46903aaad1db802d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  platformsLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  animator: {fileID: 0}
-  rigidbody2d: {fileID: 0}
-  boxCollider2d: {fileID: 0}
-  jump: {fileID: 0}
-  keySound: {fileID: 0}
-  endSound: {fileID: 0}
 --- !u!1 &1814814525
 GameObject:
   m_ObjectHideFlags: 0
