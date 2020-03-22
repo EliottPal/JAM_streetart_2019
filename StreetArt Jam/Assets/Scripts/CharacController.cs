@@ -11,6 +11,7 @@ using UnityEngine.SceneManagement;
 public class CharacController : MonoBehaviour
 {
     [SerializeField] private LayerMask platformsLayerMask;
+    [SerializeField] private LayerMask JumpBoostLayerMask;
     public GameObject levelComplete;
     public GameObject keyObject;
     private levelCompletedMessage _completed;
@@ -56,13 +57,13 @@ public class CharacController : MonoBehaviour
             position.x = position.x + 2.8f * horizontal * Time.deltaTime;
             transform.position = position;
 
-            if (IsGrounded() && (Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.Z)))
+            if ((IsGrounded() | IsGrounded_next()) && (Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.Z)))
             {
                 jump.Play();
                 jumpVelocity = 5f;
                 rigidbody2d.velocity = Vector2.up * jumpVelocity;
             }
-            if (IsGrounded())
+            if ((IsGrounded() | IsGrounded_next()))
                 animator.SetBool("isJumping", false);
             else
                 animator.SetBool("isJumping", true);
@@ -88,6 +89,15 @@ public class CharacController : MonoBehaviour
     {
         RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, .1f, platformsLayerMask);
         if (raycastHit2d.collider == null)
+            return false;
+        else
+            return true;
+    }
+
+    private bool IsGrounded_next()
+    {
+        RaycastHit2D raycastHit2d_next = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, .1f, JumpBoostLayerMask);
+        if (raycastHit2d_next.collider == null)
             return false;
         else
             return true;
