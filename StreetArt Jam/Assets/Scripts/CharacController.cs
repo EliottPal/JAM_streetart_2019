@@ -57,7 +57,13 @@ public class CharacController : MonoBehaviour
             position.x = position.x + 2.8f * horizontal * Time.deltaTime;
             transform.position = position;
 
-            if ((IsGrounded() | IsGrounded_next()) && (Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.Z)))
+            if (IsGrounded() && (Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.Z)))
+            {
+                jump.Play();
+                jumpVelocity = 3f;
+                rigidbody2d.velocity = Vector2.up * jumpVelocity;
+            }
+            if (IsGrounded_next() && (Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.Z)))
             {
                 jump.Play();
                 jumpVelocity = 5f;
