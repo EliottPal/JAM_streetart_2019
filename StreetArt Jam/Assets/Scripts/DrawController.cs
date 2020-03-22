@@ -12,6 +12,7 @@ public class DrawController : MonoBehaviour
     public float SprayAmmo;
     public AudioSource SpraySound;
     private char type = 'b';
+    public bool isDrawing = false;
 
     // Use this for initialization
     void Start()
@@ -29,7 +30,7 @@ public class DrawController : MonoBehaviour
             else
                 type = 'b';
         }
-        if (Input.GetMouseButton(0) && SprayAmmo > 0)
+        if (Input.GetMouseButton(0) && SprayAmmo > 0 && isDrawing)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -59,7 +60,10 @@ public class DrawController : MonoBehaviour
             }
             if (SprayAmmo > 0)
             {
-                SprayAmmo -= 0.5f;
+                if (type == 'b')
+                    SprayAmmo -= 0.5f;
+                else
+                    SprayAmmo -= 1;
                 blueBar.SetSize(SprayAmmo / 100);
             }
         }
