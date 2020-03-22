@@ -24,6 +24,7 @@ public class CharacController : MonoBehaviour
     float jumpVelocity;
     public DrawController drawController;
     bool jumptest;
+    bool stop;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class CharacController : MonoBehaviour
         key = false;
         door = false;
         jumptest = false;
+        stop = false;
     }
 
     // Update is called once per frame
@@ -43,26 +45,41 @@ public class CharacController : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
 
-        animator.SetFloat("Speed", Mathf.Abs(horizontal));
-        animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
-
-        Vector2 position = transform.position;
-        position.x = position.x + 2.8f * horizontal * Time.deltaTime;
-        transform.position = position;
-
-        if (IsGrounded() && (Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.Z)))
+        if (stop == false)
         {
-            jump.Play();
-            jumpVelocity = 5f;
-            rigidbody2d.velocity = Vector2.up * jumpVelocity;
-        }
+            animator.SetFloat("Speed", Mathf.Abs(horizontal));
+            animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
 
+            Vector2 position = transform.position;
+            position.x = position.x + 2.8f * horizontal * Time.deltaTime;
+            transform.position = position;
+
+            if (IsGrounded() && (Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.Z)))
+            {
+                jump.Play();
+                jumpVelocity = 5f;
+                rigidbody2d.velocity = Vector2.up * jumpVelocity;
+            }
+            if (IsGrounded())
+                animator.SetBool("isJumping", false);
+            else
+                animator.SetBool("isJumping", true);
+        }
         if (Input.GetKeyDown(KeyCode.R))
+        {
+            stop = false;
+            key = false;
+            door = false;
             Reset();
-        if (IsGrounded())
-            animator.SetBool("isJumping", false);
-        else
-            animator.SetBool("isJumping", true);
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (stop == false)
+                stop = true;
+            else
+                stop = false;
+        }
+            
     }
 
     private bool IsGrounded()

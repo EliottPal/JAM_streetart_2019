@@ -11,7 +11,7 @@ public class KeyCollect : MonoBehaviour
         if (controller != null)
         {
             controller.ChangeKey();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
