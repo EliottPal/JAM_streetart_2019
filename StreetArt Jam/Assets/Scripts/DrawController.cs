@@ -6,10 +6,12 @@ public class DrawController : MonoBehaviour
 {
     [SerializeField] private BlueSprayScript blueBar;
     public GameObject Brush;
+    public GameObject Spray;
     public float BrushSize = 0.1f;
     public RenderTexture RTexture;
     public float SprayAmmo;
     public AudioSource SpraySound;
+    private char type = 'b';
 
     // Use this for initialization
     void Start()
@@ -20,7 +22,13 @@ public class DrawController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyUp(KeyCode.B))
+        {
+            if (type == 'b')
+                type = 'g';
+            else
+                type = 'b';
+        }
         if (Input.GetMouseButton(0) && SprayAmmo > 0)
         {
             if (Input.GetMouseButtonDown(0))
@@ -37,9 +45,17 @@ public class DrawController : MonoBehaviour
             if (Physics.Raycast(Ray, out hit))
             {
                 //instanciate a brush
-                var go = Instantiate(Brush, hit.point + Vector3.up * 0.1f, Quaternion.identity, transform);
-                go.transform.localScale = Vector3.one * BrushSize;
-                go.transform.Rotate(-90, 0, 0);
+                if (type == 'b')
+                {
+                    var go = Instantiate(Brush, hit.point + Vector3.up * 0.1f, Quaternion.identity, transform);
+                    go.transform.localScale = Vector3.one * BrushSize;
+                    go.transform.Rotate(-90, 0, 0);
+                } else
+                {
+                    var go = Instantiate(Spray, hit.point + Vector3.up * 0.1f, Quaternion.identity, transform);
+                    go.transform.localScale = Vector3.one * BrushSize;
+                    go.transform.Rotate(-90, 0, 0);
+                }
             }
             if (SprayAmmo > 0)
             {

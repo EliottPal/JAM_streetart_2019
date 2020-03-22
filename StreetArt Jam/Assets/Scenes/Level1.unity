@@ -433,6 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueBar: {fileID: 25793068}
   Brush: {fileID: 1487793976853437279, guid: e41c7a248b990ad428362fe580784289, type: 3}
+  Spray: {fileID: 1162222663507996773, guid: b22caa83efdaed74eaece984b5b2d8ba, type: 3}
   BrushSize: 0.02
   RTexture: {fileID: 0}
   SprayAmmo: 100
