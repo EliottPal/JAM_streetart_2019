@@ -14,6 +14,12 @@ public class VolumeManager : MonoBehaviour
         btn.onClick.AddListener(TaskOnClick);
     }
 
+    public void ToggleFullScreen(bool isFullScreen) {
+        Debug.Log("Toggle is " + isFullScreen);
+        Screen.fullScreen = !Screen.fullScreen;
+        Debug.Log(Screen.fullScreen);
+    }
+
     void TaskOnClick()
     {
         if (isPlaying == true) {
