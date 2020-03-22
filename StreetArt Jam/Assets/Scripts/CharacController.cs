@@ -55,7 +55,7 @@ public class CharacController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.R))
-            gameObject.transform.position = originalPos;
+            Reset();
     }
 
     private bool IsGrounded()
