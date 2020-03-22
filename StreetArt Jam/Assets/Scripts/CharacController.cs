@@ -14,7 +14,12 @@ public class CharacController : MonoBehaviour
     public Rigidbody2D rigidbody2d;
     public BoxCollider2D boxCollider2d;
     public AudioSource jump;
+    public AudioSource keySound;
+    public AudioSource endSound;
     Vector3 originalPos;
+    bool key;
+    bool door;
+    float jumpVelocity;
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +27,14 @@ public class CharacController : MonoBehaviour
         rigidbody2d = transform.GetComponent<Rigidbody2D>();
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
         originalPos = gameObject.transform.position;
+        key = false;
+        door = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        float jumpVelocity;
 
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
@@ -36,16 +42,10 @@ public class CharacController : MonoBehaviour
         position.x = position.x + 2.8f * horizontal * Time.deltaTime;
         transform.position = position;
 
-        if (!IsGrounded())
-        {
-            animator.SetBool("isJumping", false);
-        }
-
         if (IsGrounded() && (Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.Z)))
         {
             jump.Play();
-            animator.SetBool("isJumping", true);
-            jumpVelocity = 4f;
+            jumpVelocity = 5f;
             rigidbody2d.velocity = Vector2.up * jumpVelocity;
         }
 
@@ -60,5 +60,18 @@ public class CharacController : MonoBehaviour
             return false;
         else
             return true;
+    }
+
+    public void ChangeKey()
+    {
+        key = true;
+        keySound.Play();
+        door = true;
+    }
+
+    public void ChangeEnd()
+    {
+        if (door == true)
+            endSound.Play();
     }
 }
