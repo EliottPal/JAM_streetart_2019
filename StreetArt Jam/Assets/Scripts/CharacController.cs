@@ -23,6 +23,7 @@ public class CharacController : MonoBehaviour
     bool door;
     float jumpVelocity;
     public DrawController drawController;
+    bool jumptest;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class CharacController : MonoBehaviour
         _completed.sprite.enabled = false; 
         key = false;
         door = false;
+        jumptest = false;
     }
 
     // Update is called once per frame
@@ -42,6 +44,7 @@ public class CharacController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
 
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
+        animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
 
         Vector2 position = transform.position;
         position.x = position.x + 2.8f * horizontal * Time.deltaTime;
@@ -56,6 +59,10 @@ public class CharacController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
             Reset();
+        if (IsGrounded())
+            animator.SetBool("isJumping", false);
+        else
+            animator.SetBool("isJumping", true);
     }
 
     private bool IsGrounded()
