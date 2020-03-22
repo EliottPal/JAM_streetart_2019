@@ -53,8 +53,11 @@ public class CharacController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.R))
-            _completed.sprite.enabled = true;
-            // gameObject.transform.position = originalPos;
+            gameObject.transform.position = originalPos;
+
+        if (Input.GetKeyDown(KeyCode.N))
+           _completed.sprite.enabled = true;
+
     }
 
     private bool IsGrounded()
