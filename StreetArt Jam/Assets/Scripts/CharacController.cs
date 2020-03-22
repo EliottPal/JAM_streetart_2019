@@ -23,6 +23,7 @@ public class CharacController : MonoBehaviour
     public AudioSource endSound;
     private SpriteRenderer renderer;
     Vector3 originalPos;
+    Vector3 explosionPos;
     bool key;
     bool door;
     float jumpVelocity;
