@@ -120,8 +120,14 @@ public class CharacController : MonoBehaviour
     {
         if (door == true) {
             endSound.Play();
-            _completed.sprite.enabled = true; 
+            _completed.sprite.enabled = true;
+            stop = true;
+            Invoke("GoBackLevelSelector", 3.0f); 
         }
+    }
+
+    public void GoBackLevelSelector() {
+        SceneManager.LoadScene("LevelSelector");
     }
 
     public void Reset()
