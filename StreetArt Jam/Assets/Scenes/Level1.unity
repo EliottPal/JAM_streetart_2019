@@ -424,7 +424,6 @@ MonoBehaviour:
   platformsLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  levelComplete: {fileID: 1501293641}
   animator: {fileID: 156952388}
   rigidbody2d: {fileID: 156952386}
   boxCollider2d: {fileID: 156952385}
