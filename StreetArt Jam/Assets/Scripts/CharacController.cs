@@ -6,11 +6,11 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Threading;
 using UnityEngine;
-
+ using Debug = UnityEngine.Debug;
 public class CharacController : MonoBehaviour
 {
     [SerializeField] private LayerMask platformsLayerMask;
-    public GameObject levelComplete;
+    public GameObject levelComplete; 
     private levelCompletedMessage _completed;
     public Animator animator;
     public Rigidbody2D rigidbody2d;
@@ -30,7 +30,8 @@ public class CharacController : MonoBehaviour
         rigidbody2d = transform.GetComponent<Rigidbody2D>();
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
         originalPos = gameObject.transform.position;
-        _completed = levelComplete.GetComponent<levelCompletedMessage>();
+        _completed = levelComplete.GetComponent<levelCompletedMessage>(); 
+        _completed.sprite.enabled = false; 
         key = false;
         door = false;
     }
@@ -54,11 +55,7 @@ public class CharacController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.R))
-            Reset();
-
-        if (Input.GetKeyDown(KeyCode.N))
-           _completed.sprite.enabled = true;
-
+            gameObject.transform.position = originalPos;
     }
 
     private bool IsGrounded()
@@ -81,7 +78,7 @@ public class CharacController : MonoBehaviour
     {
         if (door == true) {
             endSound.Play();
-            _completed.sprite.enabled = true;
+            _completed.sprite.enabled = true; 
         }
     }
 
