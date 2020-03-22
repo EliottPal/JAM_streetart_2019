@@ -7,7 +7,8 @@ public class SprayUI : MonoBehaviour
 {
     public Sprite active;
     public Sprite inactive;
-    public AudioSource spray;
+    public AudioSource open;
+    public AudioSource close;
     bool isActive;
 
     void Start()
@@ -22,12 +23,13 @@ public class SprayUI : MonoBehaviour
             if (isActive == true) {
                 isActive = false;
                 this.GetComponent<SpriteRenderer>().sprite = inactive;
+                close.Play();
                 Debug.Log("Spray inactive");
             }
             else if (isActive == false) {
                 isActive = true;
                 this.GetComponent<SpriteRenderer>().sprite = active;
-                spray.Play();
+                open.Play();
                 Debug.Log("Spray Active");
             }
         }
