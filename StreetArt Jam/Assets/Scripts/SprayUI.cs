@@ -22,13 +22,13 @@ public class SprayUI : MonoBehaviour
             if (isActive == true) {
                 isActive = false;
                 this.GetComponent<SpriteRenderer>().sprite = inactive;
-                Debug.Log("Now inactive");
+                Debug.Log("Spray inactive");
             }
             else if (isActive == false) {
                 isActive = true;
                 this.GetComponent<SpriteRenderer>().sprite = active;
                 spray.Play();
-                Debug.Log("Now Active");
+                Debug.Log("Spray Active");
             }
         }
     }
