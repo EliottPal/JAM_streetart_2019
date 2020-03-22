@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
  using Debug = UnityEngine.Debug;
 public class CharacController : MonoBehaviour
 {
@@ -106,7 +107,7 @@ public class CharacController : MonoBehaviour
         }
     }
 
-    private void Reset()
+    public void Reset()
     {
         gameObject.transform.position = originalPos;
 
@@ -114,5 +115,9 @@ public class CharacController : MonoBehaviour
         foreach (GameObject brush in brushes)
             GameObject.Destroy(brush);
         drawController.UpdateBar(100);
+    }
+
+    public void ExitMenu() {
+        SceneManager.LoadScene("Menu");
     }
 }
