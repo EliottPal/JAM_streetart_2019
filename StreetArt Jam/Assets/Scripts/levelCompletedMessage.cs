@@ -9,6 +9,6 @@ public SpriteRenderer sprite;
     void Start() 
     { 
         sprite = GetComponent<SpriteRenderer>(); 
-        sprite.enabled =false; 
+        sprite.enabled = false; 
     } 
 } 

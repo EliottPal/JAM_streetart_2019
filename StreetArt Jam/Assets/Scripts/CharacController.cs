@@ -11,7 +11,8 @@ using UnityEngine.SceneManagement;
 public class CharacController : MonoBehaviour
 {
     [SerializeField] private LayerMask platformsLayerMask;
-    public GameObject levelComplete; 
+    public GameObject levelComplete;
+    public GameObject keyObject;
     private levelCompletedMessage _completed;
     public Animator animator;
     public Rigidbody2D rigidbody2d;
@@ -115,6 +116,7 @@ public class CharacController : MonoBehaviour
         foreach (GameObject brush in brushes)
             GameObject.Destroy(brush);
         drawController.UpdateBar(100);
+        keyObject.SetActive(true);
     }
 
     public void ExitMenu() {

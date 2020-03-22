@@ -625,6 +625,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   levelComplete: {fileID: 39824947}
+  keyObject: {fileID: 20274959}
   animator: {fileID: 156952388}
   rigidbody2d: {fileID: 156952386}
   boxCollider2d: {fileID: 156952385}
