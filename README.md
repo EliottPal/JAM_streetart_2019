@@ -9,7 +9,7 @@ Secondary objectives:
 
 Achievement:
 
-Introducing: Street Dreams
+Introducing Street Dreams
 
 A platform / reflexion game made in Unity 2D
 Game made during EPITECH's 2nd Game Jam (March 20 -> March 22 2020)
